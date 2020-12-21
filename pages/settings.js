@@ -1,6 +1,8 @@
 import Head from 'next/head'
 
-import Layout from "../components/layout";
+import Layout from "../components/layout"
+
+import { currency } from "../shared/constants"
 
 export default function Settings() {
   return (
@@ -19,8 +21,7 @@ export default function Settings() {
             <h2>Currency</h2>
             <p>Mode:</p>
             <select>
-              <option>USD</option>
-              <option>THB</option>
+              {currency.map(cur => <option>{cur.unit}</option>)}
             </select>
           </section>
 
