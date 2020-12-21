@@ -1,0 +1,11 @@
+.container {
+  @apply mt-5 mb-5 pt-4;
+}
+
+.chargesListing {
+  @apply w-full;
+}
+
+.chargesListing li {
+  @apply flex justify-between;
+}

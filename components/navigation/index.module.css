@@ -1,0 +1,24 @@
+.header {
+  @apply flex w-full justify-between;
+}
+
+.navigation {
+  @apply flex;
+}
+.navigation li {
+  @apply ml-4
+}
+
+.title a {
+  @apply text-blue-800 font-bold;
+}
+
+.title a:hover,
+.title a:focus,
+.title a:active {
+  text-decoration: underline;
+}
+
+.title {
+  @apply m-0;
+}
