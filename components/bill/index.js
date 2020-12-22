@@ -1,11 +1,22 @@
-import React, { useReducer } from "react"
+import React, { useEffect, useReducer } from "react"
 import styles from './index.module.css'
 
-import { reducer, initialState } from "../../shared/contexts/bill"
+import { REDUCER_ACTIONS, reducer, initialState } from "../../shared/contexts/bill"
+
+
+const calculateAllItems = dispatch => {
+  dispatch({ type: REDUCER_ACTIONS.CALC_PRE_PRICE });
+}
 
 export default function Bill() {
   const [state, dispatch] = useReducer(reducer, initialState);
  
+  useEffect(() => {
+    calculateAllItems(dispatch);
+  }, [])
+  
+  const { subTotal, tax, serviceCharge, grandTotal } = state.calculatedValues;
+
   return (
     <div className={styles.container}>
       <button>Add Item</button>
@@ -35,10 +46,10 @@ export default function Bill() {
         })}
       </ul>
       <ul className={styles.chargesListing}>
-        <li><span>Subtotal</span><span>$ 0.00</span></li>
-        <li><span>Tax</span><span>$ 0.00</span></li>
-        <li><span>Service Charge</span><span>$ 0.00</span></li>
-        <li><span>Grand Total</span><span>$ 0.00</span></li>
+        <li><span>Subtotal</span><span>$ {subTotal}</span></li>
+        <li><span>Tax</span><span>$ {tax}</span></li>
+        <li><span>Service Charge</span><span>$ {serviceCharge}</span></li>
+        <li><span>Grand Total</span><span>$ {grandTotal}</span></li>
       </ul>
     </div>
   )

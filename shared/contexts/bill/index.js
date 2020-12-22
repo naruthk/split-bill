@@ -1,2 +1,2 @@
-export { initialState } from "./constant"
-export { reducer } from "./reducer"
+export { initialState } from "./constants"
+export { REDUCER_ACTIONS, reducer } from "./reducer"
